@@ -112,23 +112,109 @@
             color: #128c7e;
             margin-bottom: 10px;
         }
-        .coming-soon-badge {
-            display: inline-block;
-            background-color: #ff9800;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
         p.message {
-            font-size: 1.2rem;
-            line-height: 1.6;
+            font-size: 1.05rem;
+            line-height: 1.7;
             color: #555;
             transition: color 0.3s;
+            margin-bottom: 22px;
+        }
+
+        .heart-icon {
+            font-size: 3rem;
+            margin-bottom: 6px;
+            display: block;
+            animation: heartbeat 1.6s infinite ease-in-out;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            14%       { transform: scale(1.22); }
+            28%       { transform: scale(1); }
+            42%       { transform: scale(1.15); }
+            56%       { transform: scale(1); }
+        }
+
+        .perks-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 24px 0;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .perks-list li {
+            padding: 7px 0;
+            font-size: 0.98rem;
+            color: #444;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s;
+        }
+
+        .perks-list li .check {
+            background: #25d366;
+            color: white;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            flex-shrink: 0;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 22px 0;
+            transition: border-color 0.3s;
+        }
+
+        .paypal-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #009cde, #003087);
+            color: white;
+            text-decoration: none;
+            padding: 15px 38px;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            box-shadow: 0 6px 20px rgba(0, 80, 160, 0.35);
+            transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+        }
+
+        .paypal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(0, 80, 160, 0.45);
+            filter: brightness(1.08);
+        }
+
+        .paypal-btn:active {
+            transform: translateY(0);
+        }
+
+        .paypal-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+            flex-shrink: 0;
+        }
+
+        .secure-note {
+            margin-top: 12px;
+            font-size: 0.8rem;
+            color: #aaa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
         }
         footer {
             background-color: #333;
@@ -154,6 +240,15 @@
         body.dark-mode p.message {
             color: #ccc;
         }
+        body.dark-mode .perks-list li {
+            color: #ccc;
+        }
+        body.dark-mode .divider {
+            border-color: #333;
+        }
+        body.dark-mode .secure-note {
+            color: #777;
+        }
     </style>
 </head>
 <body>
@@ -161,7 +256,7 @@
     <nav aria-label="Main Navigation">
         <div class="nav-placeholder"></div>
         
-       <div class="centered-links">
+     <div class="centered-links">
             <a href="index.html">Home</a>
             <a href="support.html">Support Us</a>
             <a href="help.html">Help & FAQ</a>
@@ -176,13 +271,31 @@
 
     <main class="support-container">
         <section class="card">
-            <span class="coming-soon-badge">Coming Soon</span>
+            <span class="heart-icon">❤️</span>
             <h1>Support the Project</h1>
             <p class="message">
-                To help us keep pushing out new updates and ensure the extension remains completely free of advertisements, please consider supporting us! 
+                This extension is completely <strong>free, open, and ad-free</strong> — and we want to keep it that way. If it's saved you from awkward moments or helped protect your privacy, consider buying us a coffee!
             </p>
-            <p style="color: #777; font-size: 0.9rem; margin-top: 30px;">
-                <em>Our system is currently being set up. Check back soon!</em>
+
+            <ul class="perks-list">
+                <li><span class="check">✓</span> Keeps the extension free for everyone</li>
+                <li><span class="check">✓</span> Funds new features &amp; faster updates</li>
+                <li><span class="check">✓</span> Helps us stay 100% ad-free</li>
+                <li><span class="check">✓</span> Supports a solo indie developer</li>
+            </ul>
+
+            <hr class="divider">
+
+            <a href="https://www.paypal.com/ncp/payment/FPNB7Q2FC44WS" target="_blank" rel="noopener noreferrer" class="paypal-btn">
+                <!-- PayPal P logo SVG -->
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.067 8.478c.492.315.844.825.983 1.39.437 1.775-.895 3.754-3.844 3.754h-.803a.698.698 0 0 0-.692.596l-.534 3.385-.152.96a.374.374 0 0 1-.37.32H12.44a.32.32 0 0 1-.318-.37l.025-.16.52-3.292.033-.183a.7.7 0 0 1 .692-.596h.448c2.819 0 5.027-1.145 5.67-4.456.27-1.38.132-2.533-.443-3.348zM7.343 4h5.15c.61 0 1.19.04 1.73.124.152.023.3.05.445.08.144.032.284.068.42.108 1.065.317 1.735.982 1.979 2.064C17.633 8.246 16.3 10.22 13.356 10.22h-1.634a.697.697 0 0 0-.69.596l-.895 5.672a.374.374 0 0 1-.37.32H7.585a.32.32 0 0 1-.318-.37L8.8 4.693A.697.697 0 0 1 9.49 4H7.343z"/>
+                </svg>
+                Donate via PayPal
+            </a>
+
+            <p class="secure-note">
+                🔒 Secure payment powered by PayPal &nbsp;·&nbsp; Any amount helps!
             </p>
         </section>
     </main>
